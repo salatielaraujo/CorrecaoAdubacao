@@ -14,7 +14,14 @@ from deep_translator import GoogleTranslator
 st.set_page_config(
     layout="wide"
 )
+
 load_dotenv()
+
+# Verifique se a chave foi carregada corretamente
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+if openai_api_key is None:
+    raise ValueError("A chave da API OPENAI_API_KEY não foi encontrada no ambiente.")
 
 # LLM object and API Key
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
